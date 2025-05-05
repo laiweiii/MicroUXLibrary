@@ -46,7 +46,6 @@ public struct FKExpandedContent<Content: View, CloseContent: View>: View {
                 Button(action: onClose) {
                     closeContent
                 }
-               
             }
             
             Spacer()
