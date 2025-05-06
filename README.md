@@ -176,9 +176,9 @@ Circle()
     .SKLoadShimmer(config: config)
 ```
 
-## 📄 License
-
-MicroUXLibrary is available under the MIT license. See the LICENSE file for more info.
+<!--## 📄 License-->
+<!---->
+<!--MicroUXLibrary is available under the MIT license. See the LICENSE file for more info.-->
 
 ## 🤝 Contributing
 
