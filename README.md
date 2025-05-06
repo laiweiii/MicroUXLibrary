@@ -2,9 +2,8 @@
 
 <div align="center">
   <img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS-blue" alt="Platform iOS | macOS">
-  <img src="https://img.shields.io/badge/Swift-5.7+-orange" alt="Swift 15+">
-  <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">
-  <img src="https://img.shields.io/badge/SwiftUI-2.0+-green" alt="SwiftUI 2.0+">
+  <img src="https://img.shields.io/badge/Swift-15+-orange" alt="Swift 15+">
+<!--  <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">-->
 </div>
 
 <p align="center">A lightweight, modular component library for crafting fluid, animated, and state-aware SwiftUI experiences with minimal effort.</p>
@@ -38,7 +37,7 @@ Or through Xcode:
 3. Select the version you want to install
 4. Click "Add Package"
 
-## 🛠 Components & Usage
+## 🛠 Components
 
 ### FluidKit
 
