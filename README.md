@@ -118,19 +118,6 @@ Circle()
     .SKLoadShimmer(config: config)
 ```
 
-## 📚 Module Structure
-
-```
-Sources/MicroUXLibrary/
-├── Extensions/ // Common Swift helpers
-├── FluidKit/
-│   ├── FKExpandFullLayout/ // Expandable content cards with animation
-│   └── FKTopBottomSheetLayout/ // Draggable top/bottom sheet layouts
-├── StateKit/
-│   ├── SKDragLoadLayout/ // Pull-to-load interaction indicator
-│   └── SKLoadShimmerLayout/ // Shimmer-style loading placeholders
-```
-
 ## 🚀 Usage Examples
 
 ### Basic Usage
