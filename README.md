@@ -1,7 +1,7 @@
 # 🧩 MicroUXLibrary
 
 <div align="center">
-  <img src="https://img.shields.io/badge/platform-iOS%20%7C%20macOS-blue" alt="Platform iOS | macOS">
+  <img src="https://img.shields.io/badge/platform-iOS-blue" alt="Platform iOS | macOS">
   <img src="https://img.shields.io/badge/Swift-15+-orange" alt="Swift 15+">
 <!--  <img src="https://img.shields.io/badge/license-MIT-brightgreen" alt="MIT License">-->
 </div>
@@ -27,7 +27,7 @@ Add MicroUXLibrary to your project by adding it as a dependency in your `Package
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/your-username/MicroUXLibrary.git", from: "1.0.0")
+    .package(url: "https://github.com/laiweiiii/MicroUXLibrary.git", from: "1.0.0")
 ]
 ```
 
