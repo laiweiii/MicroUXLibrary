@@ -27,13 +27,13 @@ Add MicroUXLibrary to your project by adding it as a dependency in your `Package
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/laiweiiii/MicroUXLibrary.git", from: "1.0.0")
+    .package(url: "https://github.com/laiweiii/MicroUXLibrary.git", from: "1.0.0")
 ]
 ```
 
 Or through Xcode:
 1. Go to File > Add Packages...
-2. Enter the repository URL: `https://github.com/your-username/MicroUXLibrary.git`
+2. Enter the repository URL: `https://github.com/laiweiii/MicroUXLibrary`
 3. Select the version you want to install
 4. Click "Add Package"
 
