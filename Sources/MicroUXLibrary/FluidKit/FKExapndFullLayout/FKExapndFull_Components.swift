@@ -8,14 +8,14 @@ import SwiftUI
 
 public struct FKExpandButton<Content: View>: View {
     let content: Content
-   
+    
     
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
     public var body: some View {
-            content
+        content
     }
 }
 
@@ -38,24 +38,16 @@ public struct FKExpandedContent<Content: View, CloseContent: View>: View {
     }
     
     public var body: some View {
-        ZStack {
+        VStack {
             // Main content
             content
                 .opacity(isExpanded ? 1 : 0)
                 .scaleEffect(isExpanded ? 1 : 0.5)
-            // Close button
-            VStack{
-                Button(action: onClose) {
-                    HStack{
-                        Spacer()
+                .overlay(alignment: .topTrailing) {
+                    Button(action: onClose) {
                         closeContent
                     }
-                    
                 }
-                Spacer()
-            }
-            
-           
         }
     }
 }
