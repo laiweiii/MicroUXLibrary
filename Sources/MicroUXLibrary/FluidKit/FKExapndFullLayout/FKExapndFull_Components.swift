@@ -38,24 +38,24 @@ public struct FKExpandedContent<Content: View, CloseContent: View>: View {
     }
     
     public var body: some View {
-        VStack {
-            // Top bar with close button
-            HStack {
-                Spacer()
-                
-                Button(action: onClose) {
-                    closeContent
-                }
-            }
-            
-            Spacer()
-            
+        ZStack {
             // Main content
             content
                 .opacity(isExpanded ? 1 : 0)
                 .scaleEffect(isExpanded ? 1 : 0.5)
+            // Close button
+            VStack{
+                Button(action: onClose) {
+                    HStack{
+                        Spacer()
+                        closeContent
+                    }
+                    
+                }
+                Spacer()
+            }
             
-            Spacer()
+           
         }
     }
 }
