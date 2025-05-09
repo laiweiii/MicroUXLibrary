@@ -34,7 +34,6 @@ dependencies: [
 Or through Xcode:
 1. Go to File > Add Packages...
 2. Enter the repository URL: `https://github.com/laiweiii/MicroUXLibrary`
-3. Select the version you want to install
 4. Click "Add Package"
 
 ## 🛠 Components
