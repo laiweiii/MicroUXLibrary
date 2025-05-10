@@ -1,4 +1,4 @@
-# 🧩 MicroUXLibrary
+# 🧩 Unicro - Micro UX Library
 
 <div align="center">
   <img src="https://img.shields.io/badge/platform-iOS-blue" alt="Platform iOS | macOS">
@@ -10,30 +10,30 @@
 
 ## ✨ Overview
 
-**MicroUXLibrary** provides a growing collection of interaction patterns and visual states that help you create polished user experiences without complex custom implementations. Built entirely with SwiftUI, it's designed to be easy to integrate and customize for any project.
+**Unicro** provides a growing collection of interaction patterns and visual states that help you create polished user experiences without complex custom implementations. Built entirely with SwiftUI, it's designed to be easy to integrate and customize for any project.
 
 The library is structured into two internal toolkits:
 
 - **FluidKit**: Gesture-driven layouts with smooth animations
 - **StateKit**: Loading patterns and transition states
 
-All components are accessible via a simple `import MicroUXLibrary`.
+All components are accessible via a simple `import Unicro`.
 
 ## 📦 Installation
 
 ### Swift Package Manager
 
-Add MicroUXLibrary to your project by adding it as a dependency in your `Package.swift` file:
+Add Unicro to your project by adding it as a dependency in your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/laiweiii/MicroUXLibrary.git", from: "1.0.0")
+    .package(url: "https://github.com/laiweiii/Unicro.git", from: "1.0.0")
 ]
 ```
 
 Or through Xcode:
 1. Go to File > Add Packages...
-2. Enter the repository URL: `https://github.com/laiweiii/MicroUXLibrary`
+2. Enter the repository URL: `https://github.com/laiweiii/Unicro`
 4. Click "Add Package"
 
 ## 🛠 Components
@@ -124,7 +124,7 @@ Import the library into your SwiftUI file:
 
 ```swift
 import SwiftUI
-import MicroUXLibrary
+import Unicro
 
 struct ContentView: View {
     @State private var isExpanded = false
@@ -177,7 +177,7 @@ Circle()
 
 <!--## 📄 License-->
 <!---->
-<!--MicroUXLibrary is available under the MIT license. See the LICENSE file for more info.-->
+<!--Unicro is available under the MIT license. See the LICENSE file for more info.-->
 
 ## 🤝 Contributing
 
