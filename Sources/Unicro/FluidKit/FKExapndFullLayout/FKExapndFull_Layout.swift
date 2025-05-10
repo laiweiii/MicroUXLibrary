@@ -5,7 +5,7 @@
 //  Created by Lai Wei on 2025-04-07.
 //
 import SwiftUI
-import MicroUXLibrary
+import Unicro
 
 public struct ExpandLayoutConfiguration {
     // Appearance

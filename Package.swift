@@ -1,5 +1,4 @@
-// swift-tools-version:5.9
-
+// swift-tools-version: 5.7
 import PackageDescription
 
 let package = Package(
@@ -14,7 +13,7 @@ let package = Package(
         .target(
             name: "Unicro",
             dependencies: [],
-            path: "Sources/UXLibrary"
+            path: "Sources/Unicro"  
         ),
     ]
 )

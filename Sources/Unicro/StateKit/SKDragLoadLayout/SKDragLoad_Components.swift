@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import MicroUXLibrary
+import Unicro
 
 public struct SKDragLoadConfiguration {
     public var threshold: CGFloat

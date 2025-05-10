@@ -5,7 +5,7 @@
 //  Created by Lai Wei on 2025-04-03.
 //
 import SwiftUI
-import MicroUXLibrary
+import Unicro
 
 
 /// Example view demonstrating the usage of the components
