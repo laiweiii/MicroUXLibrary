@@ -3,22 +3,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "MicroUXLibrary",
+    name: "Unicro",
     platforms: [
         .iOS(.v15)
     ],
     products: [
-        .library(name: "MicroUXLibrary", targets: ["MicroUXLibrary"]),
+        .library(name: "Unicro", targets: ["Unicro"]),
     ],
     targets: [
         .target(
-            name: "MicroUXLibrary",
+            name: "Unicro",
             dependencies: [],
-            path: "Sources/MicroUXLibrary"
-        ),
-        .testTarget(
-            name: "MicroUXLibraryTests",
-            dependencies: ["MicroUXLibrary"]
+            path: "Sources/UXLibrary"
         ),
     ]
 )

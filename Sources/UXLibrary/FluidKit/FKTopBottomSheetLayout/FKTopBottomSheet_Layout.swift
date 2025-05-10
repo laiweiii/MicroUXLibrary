@@ -22,8 +22,8 @@ public struct FKTopBottomSheetLayout<SheetContent: View, TopBarContent: View>: V
     let sheetContent: () -> SheetContent
    
     public init(
-        sheetPosition: Binding<SheetPosition>,
         config: SheetConfiguration = .standard,
+        sheetPosition: Binding<SheetPosition>,
         @ViewBuilder topBarContent: @escaping () -> TopBarContent,
         @ViewBuilder sheetContent: @escaping () -> SheetContent
     ) {

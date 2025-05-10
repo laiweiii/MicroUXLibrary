@@ -148,8 +148,11 @@ struct FKExpandLayoutExample: View {
                             .font(.title)
                             .foregroundStyle(.white)
                             .frame(width: 44, height: 44)
+                            .padding(.trailing)
+                            .padding(.top)
                     },
                     expandedContent: {
+//
                         ScrollView {
                             VStack(spacing: 16) {
                                 ForEach(0..<10) { i in
