@@ -17,12 +17,12 @@ public struct FKTopBottomSheetLayout<SheetContent: View, TopBarContent: View>: V
     }
     
     @Binding var sheetPosition: SheetPosition
-    var config: SheetConfiguration
+    var config: TopBottomSheetLayoutConfiguration
     let topBarContent: () -> TopBarContent
     let sheetContent: () -> SheetContent
    
     public init(
-        config: SheetConfiguration = .standard,
+        config: TopBottomSheetLayoutConfiguration = .standard,
         sheetPosition: Binding<SheetPosition>,
         @ViewBuilder topBarContent: @escaping () -> TopBarContent,
         @ViewBuilder sheetContent: @escaping () -> SheetContent
@@ -43,7 +43,7 @@ public struct FKTopBottomSheetLayout<SheetContent: View, TopBarContent: View>: V
     ) {
         self._sheetPosition = sheetPosition
         
-        var customConfig = SheetConfiguration.standard
+        var customConfig = TopBottomSheetLayoutConfiguration.standard
         customConfig.backgroundColor = accentColor
         customConfig.strokeColor = strokeColor
         
@@ -99,21 +99,25 @@ public struct FKTopBottomSheetLayout<SheetContent: View, TopBarContent: View>: V
     }
 }
 
-public struct Example: View {
+public struct FKTopBottomSheetLayoutExample: View {
     @State private var position: SheetPosition = .collapsed
 
     public var body: some View {
         FKTopBottomSheetLayout(
+            config: TopBottomSheetLayoutConfiguration(
+                backgroundColor: Color(hex: "F8D6F9"),
+                strokeColor: Color(hex: "CD6ECF")),
             sheetPosition: $position,
             topBarContent: {
                 HStack {
                     Image(systemName: "magnifyingglass")
+                        .padding(.leading)
                     Text("Search here")
                         .font(.system(size: 16, weight: .medium))
                     Spacer()
                 }
-                .foregroundStyle(.white)
                 .frame(height: 50)
+                .foregroundStyle(.gray)
             },
             sheetContent: {
                 ScrollView {
@@ -133,5 +137,5 @@ public struct Example: View {
 
 // MARK: - Preview
 #Preview {
-    Example()
+    FKTopBottomSheetLayoutExample()
 }

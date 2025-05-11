@@ -9,55 +9,76 @@
 import SwiftUI
 
 /// Configuration object for sheet components to provide consistent styling
-public struct SheetConfiguration {
-    // Appearance
+public struct TopBottomSheetLayoutConfiguration {
+    // Appearance properties
     var backgroundColor: Color
     var strokeColor: Color
     var cornerRadius: CGFloat
     var shadowRadius: CGFloat
     var shadowColor: Color
-    var dragHandleColor: Color
+    var dragHandlerColor: Color
     
-    // Behavior
+    // Behavior properties
     var animationDuration: Double
     var animationCurve: Animation
     
+    // Standard configuration
+    public static let standard = TopBottomSheetLayoutConfiguration(
+        backgroundColor: .white,
+        strokeColor: .gray.opacity(0.4),
+        cornerRadius: 20,
+        shadowRadius: 4,
+        shadowColor: Color.black.opacity(0.2),
+        dragHandlerColor: Color.gray.opacity(0.4),
+        animationDuration: 0.5,
+        animationCurve: .easeInOut(duration: 0.5)
+    )
+    
+    
     public init(
-        backgroundColor: Color = Color(hex: "#FCFCFC"),
-        strokeColor: Color = Color.gray.opacity(0.4),
-        cornerRadius: CGFloat = 20,
-        shadowRadius: CGFloat = 4,
-        shadowColor: Color = Color.black.opacity(0.2),
-        dragHandleColor: Color = .gray,
-        animationDuration: Double = 0.5,
-        animationCurve: Animation = .timingCurve(0.25, 0.1, 0, 1.0, duration: 0.5)
+        backgroundColor: Color? = nil,
+        strokeColor: Color? = nil,
+        cornerRadius: CGFloat? = nil,
+        shadowRadius: CGFloat? = nil,
+        shadowColor: Color? = nil,
+        dragHandlerColor: Color? = nil,
+        animationDuration: Double? = nil,
+        animationCurve: Animation? = nil
+    ) {
+        // Start with standard config
+        let standard = TopBottomSheetLayoutConfiguration.standard
+        
+        // Only override the specified properties
+        self.backgroundColor = backgroundColor ?? standard.backgroundColor
+        self.strokeColor = strokeColor ?? standard.strokeColor
+        self.cornerRadius = cornerRadius ?? standard.cornerRadius
+        self.shadowRadius = shadowRadius ?? standard.shadowRadius
+        self.shadowColor = shadowColor ?? standard.shadowColor
+        self.dragHandlerColor = dragHandlerColor ?? standard.dragHandlerColor
+        self.animationDuration = animationDuration ?? standard.animationDuration
+        self.animationCurve = animationCurve ?? standard.animationCurve
+    }
+    
+    
+    private init(
+        backgroundColor: Color,
+        strokeColor: Color,
+        cornerRadius: CGFloat,
+        shadowRadius: CGFloat,
+        shadowColor: Color,
+        dragHandlerColor: Color,
+        animationDuration: Double,
+        animationCurve: Animation
     ) {
         self.backgroundColor = backgroundColor
         self.strokeColor = strokeColor
         self.cornerRadius = cornerRadius
         self.shadowRadius = shadowRadius
         self.shadowColor = shadowColor
-        self.dragHandleColor = dragHandleColor
+        self.dragHandlerColor = dragHandlerColor
         self.animationDuration = animationDuration
         self.animationCurve = animationCurve
     }
-    
-    // Preset configurations
-    public static let standard = SheetConfiguration()
-    
-    public static let minimal = SheetConfiguration(
-        cornerRadius: 12,
-        shadowRadius: 2,
-        animationDuration: 0.3
-    )
-    
-    public static let bold = SheetConfiguration(
-        backgroundColor: .white,
-        strokeColor: .black,
-        cornerRadius: 25,
-        shadowRadius: 8,
-        dragHandleColor: .black
-    )
 }
 
 // MARK: - Sheet Position Type
@@ -97,7 +118,7 @@ public enum SheetPosition: Equatable {
 public struct FKTopBar<Content: View>: View {
     // MARK: Properties
     private let expanded: Bool
-    private let config: SheetConfiguration
+    private let config: TopBottomSheetLayoutConfiguration
     private let content: Content
     
     // MARK: Initialization
@@ -109,7 +130,7 @@ public struct FKTopBar<Content: View>: View {
     ///   - content: The content view to display inside the bar
     public init(
         expanded: Bool,
-        config: SheetConfiguration = .standard,
+        config: TopBottomSheetLayoutConfiguration = .standard,
         @ViewBuilder content: () -> Content
     ) {
         self.expanded = expanded
@@ -127,7 +148,7 @@ public struct FKTopBar<Content: View>: View {
         @ViewBuilder content: () -> Content
     ) {
         self.expanded = expanded
-        var customConfig = SheetConfiguration.standard
+        var customConfig = TopBottomSheetLayoutConfiguration.standard
         
         if let backgroundColor = backgroundColor {
             customConfig.backgroundColor = backgroundColor
@@ -181,7 +202,7 @@ public struct FKBottomSheet<Content: View>: View {
     
     let content: Content
     let topInset: CGFloat
-    let config: SheetConfiguration
+    let config: TopBottomSheetLayoutConfiguration
     
     // MARK: Initialization
     
@@ -194,7 +215,7 @@ public struct FKBottomSheet<Content: View>: View {
     public init(
         position: Binding<SheetPosition>,
         isExpanded: Bool,
-        config: SheetConfiguration = .standard,
+        config: TopBottomSheetLayoutConfiguration = .standard,
         topInset: CGFloat = 48,
         @ViewBuilder content: () -> Content
     ) {
@@ -245,7 +266,7 @@ public struct FKBottomSheet<Content: View>: View {
                 VStack {
                     Capsule()
                         .frame(width: 40, height: 6)
-                        .foregroundStyle(config.dragHandleColor.opacity(0.5))
+                        .foregroundStyle(config.dragHandlerColor.opacity(0.5))
                         .padding(.top, 8)
                         .opacity(isExpanded ? 0 : 1)
                     Spacer()
