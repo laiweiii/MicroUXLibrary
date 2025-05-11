@@ -17,20 +17,61 @@ public struct ExpandLayoutConfiguration {
     var cornerRadiusCollapsed: CGFloat
     var cornerRadiusExpanded: CGFloat
     var needShadow: Bool
-
+    
     // Behavior
     var animation: Animation
-
+    
+    // Standard configuration
+    public static let standard = ExpandLayoutConfiguration(
+        backgroundColor: .blue,
+        collapsedWidth: 100,
+        collapsedHeight: 100,
+        expandedWidth: UIScreen.main.bounds.width - 40,
+        expandedHeight: UIScreen.main.bounds.height - 40,
+        cornerRadiusCollapsed: 50,
+        cornerRadiusExpanded: 20,
+        needShadow: true,
+        animation: .spring(response: 0.4, dampingFraction: 0.8)
+    )
+    
+    // Partial configuration initializer
     public init(
-        backgroundColor: Color = .blue,
-        collapsedWidth: CGFloat = 100,
-        collapsedHeight: CGFloat = 100,
-        expandedWidth: CGFloat = UIScreen.main.bounds.width - 40,
-        expandedHeight: CGFloat = UIScreen.main.bounds.height - 40,
-        cornerRadiusCollapsed: CGFloat = 50,
-        cornerRadiusExpanded: CGFloat = 20,
-        needShadow: Bool = true,
-        animation: Animation = .spring(response: 0.4, dampingFraction: 0.8)
+        backgroundColor: Color? = nil,
+        collapsedWidth: CGFloat? = nil,
+        collapsedHeight: CGFloat? = nil,
+        expandedWidth: CGFloat? = nil,
+        expandedHeight: CGFloat? = nil,
+        cornerRadiusCollapsed: CGFloat? = nil,
+        cornerRadiusExpanded: CGFloat? = nil,
+        needShadow: Bool? = nil,
+        animation: Animation? = nil
+    ) {
+        // Start with standard config
+        let standard = ExpandLayoutConfiguration.standard
+        
+        // Only override the specified properties
+        self.backgroundColor = backgroundColor ?? standard.backgroundColor
+        self.collapsedWidth = collapsedWidth ?? standard.collapsedWidth
+        self.collapsedHeight = collapsedHeight ?? standard.collapsedHeight
+        self.expandedWidth = expandedWidth ?? standard.expandedWidth
+        self.expandedHeight = expandedHeight ?? standard.expandedHeight
+        self.cornerRadiusCollapsed = cornerRadiusCollapsed ?? standard.cornerRadiusCollapsed
+        self.cornerRadiusExpanded = cornerRadiusExpanded ?? standard.cornerRadiusExpanded
+        self.needShadow = needShadow ?? standard.needShadow
+        self.animation = animation ?? standard.animation
+    }
+    
+    // Full initializer (used internally and for the standard preset)
+    private init(
+        backgroundColor: Color,
+        collapsedWidth: CGFloat,
+        collapsedHeight: CGFloat,
+        expandedWidth: CGFloat,
+        expandedHeight: CGFloat,
+        cornerRadiusCollapsed: CGFloat,
+        cornerRadiusExpanded: CGFloat,
+        needShadow: Bool,
+        animation: Animation
     ) {
         self.backgroundColor = backgroundColor
         self.collapsedWidth = collapsedWidth
@@ -42,9 +83,6 @@ public struct ExpandLayoutConfiguration {
         self.needShadow = needShadow
         self.animation = animation
     }
-
-    // Presets
-    public static let standard = ExpandLayoutConfiguration()
 }
 
 public struct FKExpandLayout<ButtonContent: View, CloseContent: View, ExpandedContent: View>: View {
