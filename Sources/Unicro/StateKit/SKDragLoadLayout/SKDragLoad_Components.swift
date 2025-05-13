@@ -41,23 +41,27 @@ public struct SKDragLoadIndicator: View {
 
 public struct SKDragLoadContainer<Content: View>: View {
     @State private var dragOffset: CGFloat = 0
-    @State private var isLoading: Bool = false
-
-   
+    @Binding var isLoading: Bool
+    
     private let config: SKDragLoadConfiguration
     private let content: Content
+    private let onRefresh: () -> Void
     
     var loadingView: AnyView = SKDragLoadConfiguration.standard.indicator
-
+    
+  
     public init(
         config: SKDragLoadConfiguration = .standard,
+        isLoading: Binding<Bool>,
+        onRefresh: @escaping () -> Void = {},
         @ViewBuilder content: () -> Content
     ) {
-       
         self.config = config
+        self._isLoading = isLoading
+        self.onRefresh = onRefresh
         self.content = content()
     }
-
+    
     public var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -77,11 +81,12 @@ public struct SKDragLoadContainer<Content: View>: View {
                         if value.translation.height > config.threshold {
                             isLoading = true
                             dragOffset = config.threshold
-
-                            // Simulate load
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                           
+                            onRefresh()
+                            
+                          
+                            if !isLoading {
                                 withAnimation {
-                                    isLoading = false
                                     dragOffset = 0
                                 }
                             }
@@ -93,18 +98,39 @@ public struct SKDragLoadContainer<Content: View>: View {
                     }
             )
             .animation(.easeOut, value: dragOffset)
+            .onChange(of: isLoading) { newValue in
+                if !newValue {
+                    withAnimation {
+                        dragOffset = 0
+                    }
+                }
+            }
         }
     }
 }
 
 struct DragLoadingExample: View {
+    @State private var isLoading: Bool = false // State managed by parent
+    
     var body: some View {
-        SKDragLoadContainer(config: SKDragLoadConfiguration(threshold: 20)){
+        SKDragLoadContainer(
+            config: SKDragLoadConfiguration(threshold: 20),
+            isLoading: $isLoading,
+            onRefresh: {
+                // Simulate API call or real data fetch
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    
+                    // Your real API call would go here
+                    self.isLoading = false // Set loading to false when done
+                }
+            }
+        ) {
             ForEach(0..<10) { i in
                 Text("Item \(i)")
+                    .foregroundStyle(Color(hex: "9C4AFF"))
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.white)
+                    .background(Color(hex: "E0C7FF"))
                     .cornerRadius(8)
                     .shadow(radius: 1)
                     .padding(.horizontal)

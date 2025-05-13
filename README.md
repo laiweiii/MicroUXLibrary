@@ -175,9 +175,9 @@ Circle()
     .SKLoadShimmer(config: config)
 ```
 
-<!--## 📄 License-->
-<!---->
-<!--Unicro is available under the MIT license. See the LICENSE file for more info.-->
+## 📄 License
+
+See the LICENSE file for more info.
 
 ## 🤝 Contributing
 
