@@ -7,6 +7,9 @@
 </div>
 
 <p align="center">A lightweight, modular component library for crafting fluid, animated, and state-aware SwiftUI experiences with minimal effort.</p>
+<p align="center">
+  <img src="Assets/unicro_herovideo.gif" alt="Unicro Library Demo" width="600">
+</p>
 
 ## ✨ Overview
 
